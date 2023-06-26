@@ -5,6 +5,7 @@
 import express, { Request, Response } from "express";
 import helloRouter from "./HelloRouter";
 import { logInfo } from "../utils/logger";
+import goodbyeRouter from "./GoodbyeRouter";
 
 // Instancia del Servidor
 let server = express();
@@ -22,5 +23,6 @@ rootRouter.get('/', (req: Request, res: Response) => {
 //Redirecciones a rutas y controladores
 server.use('/', rootRouter); //http://localhost:8000/api/ 
 server.use('/hello', helloRouter); //http://localhost:8000/api/hello --> HelloRouter
+server.use('/goodbye', goodbyeRouter);
 
 export default server;
