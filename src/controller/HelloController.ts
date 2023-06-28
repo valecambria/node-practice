@@ -8,11 +8,11 @@ import { logSucces } from "../utils/logger";
 export class HelloController implements IHelloController {
     /**
      * Endpoint to retrieve a message "Hello {name} in JSON"
-     * @param { string | undefined } name //lo usa swagger para documentar y generar la informacion
-     * @returns { BasicResponse }  
+     * @param name Name of the user to be greeted
+     * @returns { BasicResponse }  promise of a BasicResponse
      */
     @Get("/")
-    public async getMessage(@Query() name?: string | undefined): Promise<BasicResponse> {
+    public async getMessage(@Query()name?: string): Promise<BasicResponse> {
         logSucces('[/api/hello] Get Request ');
 
         return {
