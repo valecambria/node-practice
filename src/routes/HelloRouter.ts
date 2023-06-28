@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { HelloController } from "../controller/HelloController";
 import { logInfo } from "../utils/logger";
+import { BasicResponse } from "@/controller/types";
 
 let helloRouter = express.Router(); //accede al sistema de enrutado
 
@@ -11,7 +12,7 @@ helloRouter.route('/')
         //Instancia del controlador para ejecutar un método
         const controller: HelloController = new HelloController();
         //Obtener respuesta
-        const response = await controller.getMessage(name);
+        const response: BasicResponse = await controller.getMessage(name);
         //Enviar respuesta al cliente
         return res.send(response);
     })
